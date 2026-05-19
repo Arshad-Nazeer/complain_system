@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "http://localhost:7300/api"
+    baseURL: "https://complain-system-backend.onrender.com"
 });
 
 
