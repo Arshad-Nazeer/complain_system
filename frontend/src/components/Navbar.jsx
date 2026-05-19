@@ -5,30 +5,29 @@ function Navbar() {
     const navigate = useNavigate();
 
     const logout = () => {
-
         localStorage.removeItem("token");
-
         localStorage.removeItem("user");
-
         navigate("/");
     };
 
     return (
+        <nav className="navbar">
 
-        <div
-            style={{
-                display: "flex",
-                gap: "20px",
-                padding: "20px",
-                background: "lightgray"
-            }}
-        >
+            <div className="navbar-brand">
+                <span className="brand-dot"></span>
+                ComplaintSys
+            </div>
 
-            <button onClick={logout}>
-                Logout
-            </button>
+            <div className="navbar-actions">
+                <button
+                    className="btn-danger"
+                    onClick={logout}
+                >
+                    🚪 Logout
+                </button>
+            </div>
 
-        </div>
+        </nav>
     );
 }
 

@@ -1,9 +1,6 @@
 import { useState } from "react";
-
 import { useNavigate, Link } from "react-router-dom";
-
 import API from "../api";
-
 
 function Signup() {
 
@@ -16,12 +13,10 @@ function Signup() {
     });
 
     const handleChange = (e) => {
-
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
-
     };
 
     const handleSubmit = async (e) => {
@@ -30,71 +25,65 @@ function Signup() {
 
         try {
 
-            await API.post(
-                "/auth/signup",
-                formData
-            );
+            await API.post("/auth/signup", formData);
 
             alert("Account Created");
-
             navigate("/");
 
         } catch (error) {
-
             alert(
-                error.response.data.message
+                error?.response?.data?.message || "Signup failed"
             );
-
         }
 
     };
 
     return (
+        <div className="auth-page">
+            <div className="auth-card">
 
-        <div className="container">
+                <div className="auth-logo">✨</div>
+                <h1>Create Account</h1>
+                <p className="auth-subtitle">Join us to submit and track complaints</p>
 
-            <h1>Create Account</h1>
+                <form onSubmit={handleSubmit}>
 
-            <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Full name"
+                        onChange={handleChange}
+                        required
+                    />
 
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    onChange={handleChange}
-                    required
-                />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email address"
+                        onChange={handleChange}
+                        required
+                    />
 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                    required
-                />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Create password"
+                        onChange={handleChange}
+                        required
+                    />
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={handleChange}
-                    required
-                />
+                    <button type="submit" style={{ marginTop: "6px" }}>
+                        🚀 Create Account
+                    </button>
 
-                <button type="submit">
-                    Signup
-                </button>
+                </form>
 
-            </form>
+                <div className="auth-footer">
+                    Already have an account?
+                    <Link to="/"> Login</Link>
+                </div>
 
-            <p>
-                Already have an account?
-            </p>
-
-            <Link to="/">
-                Login
-            </Link>
-
+            </div>
         </div>
     );
 }

@@ -1,23 +1,30 @@
 import Navbar from "../components/Navbar";
-
 import ComplaintForm from "./ComplaintForm";
-
 import ComplaintList from "./ComplaintList";
-
 
 function Dashboard() {
 
     return (
-
         <div>
 
             <Navbar />
 
-            <h1>Dashboard</h1>
+            <div className="dashboard">
 
-            <ComplaintForm />
+                <div className="dashboard-header">
+                    <h1>📋 Dashboard</h1>
+                    <p>Manage, submit and track all complaints in one place.</p>
+                </div>
 
-            <ComplaintList />
+                <div className="dashboard-grid">
+
+                    <ComplaintForm />
+
+                    <ComplaintList />
+
+                </div>
+
+            </div>
 
         </div>
     );
